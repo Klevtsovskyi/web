@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>T02 A01</title>
+</head>
+<body>
+<script>
+// Напишіть функцію add(a, b), яка додає два числа.
+// Якщо якийсь аргумент не є числом, конвертуйте його в число.
+// Якщо конвертацію провести неможливо – поверніть null.
+
+  function add(a, b) {
+      // if (typeof a !== "number" || typeof b !== "number")
+      //     return null;
+      const res = Number(a) + Number(b);
+      if (isNaN(res))
+          return null;
+      return res;
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>T02 A02</title>
+</head>
+<body>
+  <button id="btn">Add</button>
+  <div id="res"></div>
+
+  <script>
+    let count = localStorage.getItem("count") ?? 0;
+    document.getElementById("res").textContent = count;
+
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", () => {
+      count++;
+      localStorage.setItem("count", count);
+      document.getElementById("res").textContent = count;
+    });
+  </script>
+
+</body>
+</html>
