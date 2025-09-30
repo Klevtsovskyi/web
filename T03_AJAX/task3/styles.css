@@ -1,0 +1,11 @@
+.main{
+    padding:5rem;
+}
+body{
+    height: 100vh;
+    background:linear-gradient(to bottom, rgb(234, 181, 18), rgb(232, 5, 227));
+}
+
+#date-picker{
+    width: fit-content;
+}
