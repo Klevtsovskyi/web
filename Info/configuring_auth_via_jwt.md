@@ -49,7 +49,7 @@ class CookieTokenObtainPairView(TokenObtainPairView):
             samesite="Lax",     # Політика передачі cookie між доменами.
                                 # Cookie надсилається при переходах між сторінками (link, redirect),
                                 # але не надсилається через функцію fetch()
-            path="/apiPrivate/token/"  # Cookie надсилається лише на URL, що починається з path
+            path="/api/token/"  # Cookie надсилається лише на URL, що починається з path
         )
         del response.data["refresh"]
 
@@ -76,7 +76,7 @@ class LogoutView(APIView):
         response = Response({"message": "Вихід із системи"})
         # Видалення cookie з заданим path, оскільки можуть існувати декілька cookie
         # з однаковим імʼям, але різними значеннями path
-        response.delete_cookie("refresh_token", path="/apiPrivate/token/")
+        response.delete_cookie("refresh_token", path="/api/token/")
         return response
 ```
 ```python
@@ -107,7 +107,7 @@ export default apiPublic;
 import axios from "axios";
 
 const apiPrivate = axios.create({
-  baseURL: '/api',
+  baseURL: "/api",
   withCredentials: true 
 });
 
@@ -250,7 +250,7 @@ import {ref} from "vue";
 import {useAuthStore} from "@/stores/authStore.js";
 import router from "@/utils/router.js";
 
-const auth = useAuthStore();
+const authStore = useAuthStore();
 
 const form = ref({
   username: "",
@@ -264,7 +264,7 @@ async function handleLogin() {
   loading.value = true;
 
   try {
-    const ok = await auth.login(form.value.username, form.value.password);
+    const ok = await authStore.login(form.value.username, form.value.password);
     if (ok)
       await router.push({name: "Home"});
 
